@@ -1,39 +1,36 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-const modal = document.getElementById('paymentModal');
-const modalProduct = document.getElementById('modalProduct');
 
 menuButton?.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
+  document.body.classList.toggle('menu-open', open);
   menuButton.setAttribute('aria-expanded', String(open));
 });
 
 document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    menuButton?.setAttribute('aria-expanded', 'false');
+  });
 });
 
-document.querySelectorAll('[data-product]').forEach(button => {
-  button.addEventListener('click', event => {
-    const href = button.getAttribute('href');
-    if (!href || href === '#') {
-      event.preventDefault();
-      modalProduct.textContent = button.dataset.product;
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
+document.querySelectorAll('[data-copy-code]').forEach(button => {
+  button.addEventListener('click', async () => {
+    const code = button.dataset.copyCode;
+    try {
+      await navigator.clipboard.writeText(code);
+      const toast = document.querySelector('.toast');
+      if (toast) {
+        toast.textContent = `Code ${code} copied`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1800);
+      }
+    } catch {
+      button.textContent = code;
     }
   });
 });
 
-function closeModal() {
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
-}
-
-document.querySelectorAll('.modal-close, .modal-close-secondary, .modal-backdrop')
-  .forEach(el => el.addEventListener('click', closeModal));
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') closeModal();
-});
-
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
