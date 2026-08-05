@@ -1,0 +1,11 @@
+[[redirects]]
+from = "/"
+to = "/brand-home.html"
+status = 200
+force = true
+
+[[redirects]]
+from = "/index.html"
+to = "/brand-home.html"
+status = 200
+force = true
