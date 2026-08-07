@@ -77,18 +77,18 @@ p { margin-top: 0; }
   backdrop-filter: blur(14px);
 }
 .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand-mark {
-  width: 42px; height: 42px; display: grid; place-items: center;
-  border-radius: 12px;
-  background: linear-gradient(145deg, var(--gold), #8c631d);
-  color: #0b0b0b;
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
+.brand { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
+.brand-logo-mark {
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  object-fit: contain;
 }
-.brand > span:last-child { display: flex; flex-direction: column; line-height: 1.05; }
-.brand strong { font-family: "Manrope", sans-serif; font-size: 1rem; }
-.brand small { color: var(--gold); font-size: .64rem; letter-spacing: .22em; }
+.brand-logo-wordmark {
+  width: 148px;
+  height: auto;
+  object-fit: contain;
+}
 .nav-links { display: flex; align-items: center; gap: 27px; font-size: .9rem; font-weight: 700; }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta { padding: 10px 17px; border: 1px solid var(--gold); border-radius: 999px; }
@@ -401,6 +401,9 @@ footer { padding: 37px 0 48px; border-top: 1px solid var(--line); }
 }
 @media (max-width: 650px) {
   .container, .policy-shell { width: min(calc(100% - 28px), var(--max)); }
+  .brand { gap: 8px; }
+  .brand-logo-mark { width: 39px; height: 39px; flex-basis: 39px; }
+  .brand-logo-wordmark { width: 119px; }
   .launch-inner { min-height: 50px; flex-wrap: wrap; gap: 4px 9px; padding: 7px 0; font-size: .76rem; }
   .nav-links { top: 126px; }
   .hero { min-height: auto; padding: 68px 0 73px; }
@@ -421,6 +424,7 @@ footer { padding: 37px 0 48px; border-top: 1px solid var(--line); }
 @media (max-width: 650px) {
   .simple-nav { gap: 10px; font-size: .78rem; }
   .simple-nav .nav-cta { padding: 8px 11px; }
+  .compact-nav-wrap .brand-logo-wordmark { display: none; }
 }
 
 
