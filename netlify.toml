@@ -36,6 +36,11 @@ for = "/*.html"
 Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
-for = "/*.{css,js,webp,png,jpg,jpeg,ico}"
+for = "/*.{css,js}"
+[headers.values]
+Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+for = "/*.{webp,png,jpg,jpeg,ico}"
 [headers.values]
 Cache-Control = "public, max-age=604800"
