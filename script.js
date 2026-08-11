@@ -1,10 +1,17 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
+const completeSystemCheckoutUrl = 'https://payhip.com/b/asC7j';
+
+document.querySelectorAll('[data-complete-system-link]').forEach(link => {
+  link.href = completeSystemCheckoutUrl;
+});
 
 menuButton?.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
   document.body.classList.toggle('menu-open', open);
   menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  menuButton.textContent = open ? '×' : '☰';
 });
 
 document.querySelectorAll('.nav-links a').forEach(link => {
@@ -12,7 +19,19 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     navLinks.classList.remove('open');
     document.body.classList.remove('menu-open');
     menuButton?.setAttribute('aria-expanded', 'false');
+    menuButton?.setAttribute('aria-label', 'Open menu');
+    if (menuButton) menuButton.textContent = '☰';
   });
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape' || !navLinks?.classList.contains('open')) return;
+  navLinks.classList.remove('open');
+  document.body.classList.remove('menu-open');
+  menuButton?.setAttribute('aria-expanded', 'false');
+  menuButton?.setAttribute('aria-label', 'Open menu');
+  if (menuButton) menuButton.textContent = '☰';
+  menuButton?.focus();
 });
 
 document.querySelectorAll('[data-copy-code]').forEach(button => {

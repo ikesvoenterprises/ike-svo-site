@@ -1,4 +1,41 @@
+[build]
+publish = "."
+
 [[redirects]]
 from = "/svo-physique"
 to = "/svo-physique.html"
 status = 200
+
+[[redirects]]
+from = "/lean-muscle"
+to = "/lean-muscle.html"
+status = 200
+
+[[redirects]]
+from = "/brand-home"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/brand-home.html"
+to = "/"
+status = 301
+force = true
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "SAMEORIGIN"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+for = "/*.html"
+[headers.values]
+Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+for = "/*.{css,js,webp,png,jpg,jpeg,ico}"
+[headers.values]
+Cache-Control = "public, max-age=604800"
