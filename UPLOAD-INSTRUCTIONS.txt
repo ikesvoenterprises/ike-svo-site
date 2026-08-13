@@ -1,0 +1,19 @@
+SVO WEBSITE UPSELLS UPDATE
+
+Upload all four website files in this folder to the ROOT of:
+ikesvoenterprises/ike-svo-site
+
+Files:
+1. index.html (replace the existing file)
+2. styles.css (replace the existing file)
+3. svo-travel-survival-kit-cover.webp (new file)
+4. svo-accountability-upgrade-cover.webp (new file)
+
+Commit message:
+Add Travel Kit and 30-Day Accountability upgrades
+
+Purchase links already installed:
+Travel Kit: https://payhip.com/b/hBEba
+Accountability: https://payhip.com/b/hQTBs
+
+Do not delete or replace any other repository files.
