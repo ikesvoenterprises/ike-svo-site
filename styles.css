@@ -690,6 +690,12 @@ footer { padding: 37px 0 48px; border-top: 1px solid var(--line); }
   box-shadow: 0 22px 58px rgba(0,0,0,.46);
 }
 .compact-product-card .store-card-body { justify-content: flex-start; }
+.custom-blueprint-visual img {
+  width: min(100%, 420px);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
 .status-badge {
   position: absolute;
   top: 22px;
